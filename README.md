@@ -5,7 +5,7 @@
 Python ver 3.0 or later.
 
 # Setting up
-You will need 3 files to run the tiling app: **the video** and **2 images** that will be used for tiling.
+You will need 3 files to run the tiling app: **the video** and **2 images** that will be used for tiling. There are example video and images in the repository, but you may replace them with your own.
 
 ## Video restrictions
 The video has to be at least 240p, otherwise the code will work incorrectly. There are no restrictions on video's FPS, though.
