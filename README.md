@@ -2,7 +2,7 @@
  An app for tiling the Bad Apple!! clip with 2 images.
 
 # Required apps
-Python ver 3.0 or later.
+Python ver. 3.0 or later.
 
 # Setting up
 You will need 3 files to run the tiling app: **the video** and **2 images** that will be used for tiling. There are example video and images in the repository, but you may replace them with your own.
