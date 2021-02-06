@@ -14,7 +14,7 @@ The video has to be at least 240p, otherwise the code will work incorrectly. The
 The resolutions must match and your video's dimensions must be divisible by the tiles's dimensions, otherwise the code will work incorrectly.
 
 # How to use
-Open the command line in the folder where you've saved the code and input the following:
+Open a command line window in the folder where you've saved the code and input the following:
 * Windows:
 ```
 py -m pip install -r requirements.txt
