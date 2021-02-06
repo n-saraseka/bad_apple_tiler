@@ -37,28 +37,25 @@ def tile(frame):
                 frame.paste(tile1, (k*t_w, j*t_h))
             else:
                 frame.paste(tile2, (k*t_w, j*t_h))
+    if (w%10!=0):
+        frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
+    return frame
 
 def numpy_convert():
     for i in range(frame_count):
         frame = Image.fromarray(clip.get_frame((1/clip.fps)*i))
-        tile(frame)
-        w, h = frame.size
-        if (w%120!=0):
-            frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
+        frame = tile(frame)
         frame = numpy.array(frame)
         frames.append(frame)
     print('Writing the converted video file, this may take some time...')
     return ImageSequenceClip(frames, fps=clip.fps)
 
-def PIL_convert():
+def pil_convert():
     os.mkdir(frames_dir)
     for i in range(frame_count):
         clip.save_frame(os.path.join(frames_dir, f'{i}.jpg'), t=(1/clip.fps)*i)
         frame = Image.open(os.path.join(frames_dir, f'{i}.jpg'))
-        tile(frame)
-        w, h = frame.size
-        if (w%10!=0):
-            frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
+        frame = tile(frame)
         frame.save(os.path.join(frames_dir, f'{i}.jpg'))
     print('Writing the converted video file, this may take some time...')
     return ImageSequenceClip([os.path.join(frames_dir, f'{i}.jpg') for i in range(len(os.listdir(frames_dir)))], fps=clip.fps)
@@ -70,7 +67,7 @@ print('Converting...')
 if choice=='Y' or choice=='y':
     converted_video = numpy_convert()
 elif choice=='N' or choice=='n':
-    converted_video = PIL_convert()
+    converted_video = p_convert()
 
 if (audio!=None):
     audio.duration = clip.duration
