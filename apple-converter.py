@@ -7,11 +7,12 @@ default_path = os.path.split(os.path.abspath(__file__))[0]
 frames_dir = os.path.join(default_path, 'frames')
 frames = [] #for conversion without saving frames to disk
 converted_video = 0
-
 video_title=input('Input the name of the video (including the file extension): ')
 clip = VideoFileClip(video_title)
 frame_count = int(clip.duration*clip.fps)
 audio = clip.audio
+if (clip.w%10!=0):
+        clip = clip.crop(x1=0, x2=clip.w-clip.w%10) #for weird situations when the w:h ratio isn't actually 4:3
 
 tile1=input('Input the name of the first tile (including the file extension). It will be used for replacing white pixels: ')
 tile1 = Image.open(os.path.join(default_path, tile1))
@@ -20,6 +21,12 @@ tile2 = Image.open(os.path.join(default_path, tile2))
 
 # works with any tiles of same size
 t_w, t_h = tile1.size
+
+class TileError(Exception):
+    print('')
+
+if (tile1.size==tile2.size and clip.w%t_w==0 and clip.h%t_h==0)==False:
+    raise TileError("The tiles don't follow at least one of these requirements:\n Tiles must have equal resolution and the video's dimensions should be divisible by tiles's dimensions.")
 
 def tile(frame):
     w, h = frame.size
@@ -37,8 +44,6 @@ def tile(frame):
                 frame.paste(tile1, (k*t_w, j*t_h))
             else:
                 frame.paste(tile2, (k*t_w, j*t_h))
-    if (w%10!=0):
-        frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
     return frame
 
 def numpy_convert():
@@ -74,4 +79,3 @@ if (audio!=None):
     converted_video.audio = audio
 converted_video.write_videofile('converted.mp4', audio=True)
 shutil.rmtree(frames_dir, ignore_errors=True)
-print('The converted file is now saved to converted.mp4.')
