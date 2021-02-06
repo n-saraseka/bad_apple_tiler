@@ -67,7 +67,7 @@ print('Converting...')
 if choice=='Y' or choice=='y':
     converted_video = numpy_convert()
 elif choice=='N' or choice=='n':
-    converted_video = p_convert()
+    converted_video = pil_convert()
 
 if (audio!=None):
     audio.duration = clip.duration
