@@ -34,9 +34,9 @@ def tile(frame):
         for k in range(w_r):
             cpixel = pixels[k,j]
             if cpixel==255:
-                frame.paste(tile1, (k*10, j*10))
+                frame.paste(tile1, (k*t_w, j*t_h))
             else:
-                frame.paste(tile2, (k*10, j*10))
+                frame.paste(tile2, (k*t_w, j*t_h))
 
 def numpy_convert():
     for i in range(frame_count):
