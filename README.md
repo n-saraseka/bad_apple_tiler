@@ -1,5 +1,5 @@
 # bad_apple-tiler
- An app for tiling the Bad Apple!! clip with 2 images.
+ A script for tiling the Bad Apple!! clip with 2 images.
 
 # Required apps
 Python ver. 3.0 or later.
