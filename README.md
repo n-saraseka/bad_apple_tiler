@@ -5,7 +5,7 @@
 Python ver. 3.0 or later.
 
 # Setting up
-Download the code using the *Clone or Download/Download as ZIP* button and extract the archive to your chosen directory. 
+Download the code by pressing the *Clone or Download/Download as ZIP* button and extract the archive to your chosen directory. 
 You will need 3 files to run the tiling script: **the video** and **2 images** that will be used for tiling. There are example video and images in the repository, but you may replace them with your own.
 
 ## Video restrictions
