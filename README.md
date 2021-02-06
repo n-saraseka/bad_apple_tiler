@@ -5,13 +5,14 @@
 Python ver. 3.0 or later.
 
 # Setting up
-You will need 3 files to run the tiling app: **the video** and **2 images** that will be used for tiling. There are example video and images in the repository, but you may replace them with your own.
+Download the code using the *Clone or Download/Download as ZIP* button and extract the archive to your chosen directory. 
+You will need 3 files to run the tiling script: **the video** and **2 images** that will be used for tiling. There are example video and images in the repository, but you may replace them with your own.
 
 ## Video restrictions
-The video has to be at least 240p, otherwise the code will work incorrectly. There are no restrictions on video's FPS, though.
+The video has to be at least 240p. There are no restrictions on video's FPS, though.
 
 ## Tile restrictions
-The resolutions must match and your video's dimensions must be divisible by the tiles's dimensions, otherwise the code will work incorrectly.
+Tiles must have equal resolution and the video's dimensions should be divisible by tiles's dimensions.
 
 # How to use
 Open a command line window in the folder where you've saved the code and input the following:
