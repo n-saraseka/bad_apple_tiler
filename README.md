@@ -11,7 +11,7 @@ You will need 3 files to run the tiling app: **the video** and **2 images** that
 The video has to be at least 240p, otherwise the code will work incorrectly. There are no restrictions on video's FPS, though.
 
 ## Tile restrictions
-The tile images have to be of same resolution and your video's dimensions must be divisible by the tiles's dimensions, otherwise the code will work incorrectly.
+The resolutions must match and your video's dimensions must be divisible by the tiles's dimensions, otherwise the code will work incorrectly.
 
 # How to use
 Run the **convert.bat** file. It will automatically install the necessary modules and run the code. Follow the instructions on screen and wait until it finishes tiling. The tiled video will be saved to a file called **converted.mp4**.
