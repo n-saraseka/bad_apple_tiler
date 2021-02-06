@@ -37,14 +37,14 @@ def tile(frame):
                 frame.paste(tile1, (k*t_w, j*t_h))
             else:
                 frame.paste(tile2, (k*t_w, j*t_h))
-    if (w%10!=0):
-        frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
-    return frame
 
 def numpy_convert():
     for i in range(frame_count):
         frame = Image.fromarray(clip.get_frame((1/clip.fps)*i))
-        frame = tile(frame)
+        tile(frame)
+        w, h = frame.size
+        if (w%120!=0):
+            frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
         frame = numpy.array(frame)
         frames.append(frame)
     print('Writing the converted video file, this may take some time...')
@@ -55,7 +55,10 @@ def PIL_convert():
     for i in range(frame_count):
         clip.save_frame(os.path.join(frames_dir, f'{i}.jpg'), t=(1/clip.fps)*i)
         frame = Image.open(os.path.join(frames_dir, f'{i}.jpg'))
-        frame = tile(frame)
+        tile(frame)
+        w, h = frame.size
+        if (w%10!=0):
+            frame = frame.crop((0, 0, w-w%10, h)) #used to eliminate convertion glitches
         frame.save(os.path.join(frames_dir, f'{i}.jpg'))
     print('Writing the converted video file, this may take some time...')
     return ImageSequenceClip([os.path.join(frames_dir, f'{i}.jpg') for i in range(len(os.listdir(frames_dir)))], fps=clip.fps)
